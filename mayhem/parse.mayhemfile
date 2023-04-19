@@ -1,0 +1,7 @@
+project: feed-rs
+target: parse
+duration: 600
+cmds:
+    - cmd: /fuzzers/fuzz_parse
+testsuite:
+    - file:///corpus/rs
