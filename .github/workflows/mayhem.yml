@@ -58,18 +58,17 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        parse_mayhemfile:
+        mayhemfile:
           - mayhem/parse.mayhemfile
 
     steps:
       - uses: actions/checkout@v3
 
-
-      - name: Start analysis for ${{ matrix.parse_mayhemfile }}
+      - name: Start analysis for ${{ matrix.mayhemfile }}
         uses: ForAllSecure/mcode-action@v1
         with:
           mayhem-token: ${{ secrets.MAYHEM_TOKEN }}
-          args: --image ${{ needs.build.outputs.image }} --file ${{ matrix.parse_mayhemfile }} --duration 600
+          args: --image ${{ needs.build.outputs.image }} --file ${{ matrix.mayhemfile }} --duration 600
           sarif-output: sarif
 
       - name: Upload SARIF file(s)
