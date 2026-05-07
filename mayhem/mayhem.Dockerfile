@@ -1,5 +1,7 @@
 # Build Stage
-FROM ghcr.io/evanrichter/cargo-fuzz:latest AS BUILDER
+FROM rustlang/rust:nightly AS builder
+
+RUN cargo install cargo-fuzz
 
 # Add source code to the build stage.
 ADD . /src
